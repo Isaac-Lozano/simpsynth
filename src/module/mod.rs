@@ -2,11 +2,13 @@ pub mod sine;
 pub mod square;
 pub mod mult;
 pub mod add;
+pub mod envelope;
 
 pub use module::sine::Sine;
 pub use module::square::Square;
 pub use module::mult::Mult;
 pub use module::add::Add;
+pub use module::envelope::Envelope;
 
 pub trait Module
 {

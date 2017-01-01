@@ -3,7 +3,7 @@ use module::Module;
 pub struct Square
 {
     freq: Box<Module>,
-    time: f32,
+    phase: f32,
 }
 
 impl Square
@@ -13,7 +13,7 @@ impl Square
         Square
         {
             freq: Box::new(freq),
-            time: 0.0,
+            phase: 0.0,
         }
     }
 }
@@ -22,8 +22,8 @@ impl Module for Square
 {
     fn generate(&mut self, step: f32) -> Option<f32>
     {
-        self.time %= 1.0;
-        let res = if self.time > 0.5
+        self.phase %= 1.0;
+        let res = if self.phase > 0.5
         {
             1.0
         }
@@ -31,7 +31,7 @@ impl Module for Square
         {
             -1.0
         };
-        self.time += step * self.freq.generate(step).unwrap();
+        self.phase += step * self.freq.generate(step).unwrap();
         Some(res)
     }
 }
