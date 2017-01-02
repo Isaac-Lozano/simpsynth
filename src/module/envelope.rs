@@ -1,6 +1,4 @@
 use module::Module;
-use std::io;
-use std::io::Write;
 
 #[derive(Clone,Copy,Debug)]
 pub struct AudioPoint
@@ -63,7 +61,6 @@ impl Envelope
                         *first = *second;
                         *second = *next;
                         *next_idx += 1;
-                        write!(io::stderr(), "Time: {}; AudioPoint {{\n{:#?}\n{:#?}\n{:#?}\n", self.time, *first, *second, *next_idx);
                     }
                     else
                     {
